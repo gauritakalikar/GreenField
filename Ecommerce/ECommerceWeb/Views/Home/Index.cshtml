@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        @{
+            string company = "TransFlower";
+            <h1 id="title">@company</h1>
+        }
+
+        <p class="lead">Online Shopping Portal</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-md">Shop more &raquo;</a></p>
+    </section>
+
+    <div>
+        @{ 
+            foreach(ECommerceWeb.Models.Product p in @Model)
+            {
+                <ol>
+                            <img src="@p.Image" width="50" height="50" />
+                </ol>
+                
+            }
+        }
+    </div>
+</main>
