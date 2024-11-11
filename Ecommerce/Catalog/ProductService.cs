@@ -3,62 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using POCO;
 namespace Catalog
 {
     public class ProductService : IProductService
     {
-        private List<Product> products;
-        public ProductService() { 
-            this.products = new List<Product>();
-        }
-        public bool Delete(Product product)
+        public bool Delete(int id)
         {
-            products.Remove(product);
-            return true;
+            return false;
         }
 
-        public Product GetProductById(int id)
+        public Product Get(int id)
         {
-            List<Product> products = this.products;
-            foreach (Product p in products)
-            {
-                if (p.Id == id) { return p; }
-
-            }
-            return null;
+            return new Product { Id = 1, Name = "gerbera", Description = "Wedding Flower", UnitPrice = 12, Quantity = 2000, Image = "/Images/gerberra.jpg" };
         }
 
-        public Product GetProductByName(string title)
+        public List<Product> GetAll()
         {
-            List<Product> products = this.products;
-            foreach (Product p in products)
-            {
-                if (p.Title == title) { return p; }
 
-            }
-            return null;
+            List<Product> products = new List<Product>();
+            products.Add(new Product { Id = 1, Name = "gerbera", Description = "Wedding Flower", UnitPrice = 12, Quantity = 2000, Image = "/Images/gerberra.jpg" });
+            products.Add(new Product { Id = 2, Name = "rose", Description = "Valentine Flower", UnitPrice = 23, Quantity = 9000, Image = "/images/gerberra.jpg" });
+            products.Add(new Product { Id = 3, Name = "lily", Description = "Delicate Flower", UnitPrice = 2, Quantity = 7000, Image = "/images/gerberra.jpg" });
+            products.Add(new Product { Id = 4, Name = "jasmine", Description = "Fregrance Flower", UnitPrice = 12, Quantity = 55000, Image = "/images/gerberra.jpg" });
+            products.Add(new Product { Id = 5, Name = "lotus", Description = "Worship Flower", UnitPrice = 45, Quantity = 15000, Image = "/images/gerberra.jpg" });
 
-        }
+            return products;
 
-        public List<Product> GetProducts()
-        {
-            return this.products;
         }
 
         public bool Insert(Product product)
         {
-            products.Add(product);
-            return true;
+            return false;
         }
 
         public bool Update(Product product)
         {
-            Product product1 = this.GetProductById(product.Id);
-            products.Remove(product1);
-            products.Add(product);
-            return true;
-
+            return false;
         }
     }
 }

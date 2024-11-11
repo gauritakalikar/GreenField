@@ -1,7 +1,20 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿﻿@using Catalog;
+@using POCO;
+<h2>Products for Sale</h2>
+<hr />
+<main>
+    <div class="row">
 
-<h2>Index</h2>
+        <ol>
 
+            @{
+                foreach (Product p in @Model)
+                {
+                    <li>
+                        <img src="@p.Image" width="50" height="50" />
+                    </li>
+                }
+            }
+        </ol>
+    </div>
+</main>

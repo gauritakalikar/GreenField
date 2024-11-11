@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using POCO;
-namespace Catalog
+namespace Specification
+    
 {
     public interface IProductService
     {
-        List<Product> GetAll();
-        Product Get(int id);
+        List<Product> GetProducts();
+        Product GetProductById(int id);
+        Product GetProductByName(string name);
+
         bool Insert(Product product);
         bool Update(Product product);
-        bool Delete(int id);
-
+        bool Delete(Product product);
+        
     }
 }

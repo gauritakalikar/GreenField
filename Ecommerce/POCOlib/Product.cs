@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Catalog
+namespace POCO
 {
+    [Serializable]
     public class Product
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
+        public int Id { get; set; }  //auto property
+        public string Name { get; set; }
         public string Description { get; set; }
-        public int unitPrice { get; set; }
+        public double UnitPrice { get; set; }
         public int Quantity { get; set; }
-        public string ImgURL { get; set; }
+        public string Image { get; set; }
     }
 }
