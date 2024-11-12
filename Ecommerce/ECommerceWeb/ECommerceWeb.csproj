@@ -125,13 +125,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,10 +185,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Product\Insert.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Product\Update.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\Logout.cshtml" />
     <Content Include="Views\Auth\Forgot.cshtml" />
@@ -198,9 +192,11 @@
     <Content Include="Views\Shopping\AddToCart.cshtml" />
     <Content Include="Views\Shopping\RemoveFromCart.cshtml" />
     <Content Include="Views\Shopping\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\Payment\" />
   </ItemGroup>
@@ -247,6 +243,10 @@
     <ProjectReference Include="..\POCOlib\POCOlib.csproj">
       <Project>{a1402efa-3a65-4ecb-a988-831095e434fc}</Project>
       <Name>POCOlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Services.csproj">
+      <Project>{e65d7832-4507-4144-855b-58906640e21f}</Project>
+      <Name>Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Specification\Specification.csproj">
       <Project>{c2593210-f807-4d1a-9435-3d8faf0aaee4}</Project>

@@ -6,71 +6,84 @@ using System.Threading.Tasks;
 using POCO;
 using Specification;
 using BinaryDataRepositoryLib;
+using System.Security;
+using System.Net.Http;
 namespace Services
 {
+
     public class ProductService : IProductService
     {
-
-
-        private List<Product> products;
-        public ProductService() { 
-            this.products = new List<Product>();
-        }
-        public bool Delete(Product product)
+        public bool Seeding()
         {
-            products.Remove(product);
-            return true;
+            bool status = false;
+            List<Product> products = new List<Product>();
+            products.Add(new Product { Id = 1, Name = "gerbera", Description = "Wedding Flower", UnitPrice = 12, Quantity = 2000, Image = "/Images/gerberra.jpg" });
+            products.Add(new Product { Id = 2, Name = "rose", Description = "Valentine Flower", UnitPrice = 23, Quantity = 9000, Image = "/Images/rose.jpg" });
+            products.Add(new Product { Id = 3, Name = "lily", Description = "Delicate Flower", UnitPrice = 2, Quantity = 7000, Image = "/Images/lily.jpg" });
+            products.Add(new Product { Id = 4, Name = "jasmine", Description = "Fregrance Flower", UnitPrice = 12, Quantity = 55000, Image = "/Images/jasmines.jpg" });
+            products.Add(new Product { Id = 5, Name = "lotus", Description = "Worship Flower", UnitPrice = 45, Quantity = 15000, Image = "/Images/lotus.jpg" });
+            IDataRepository<Product> repo = new BinaryRepository<Product>();
+            status = repo.Serialize("products.dat", products);
+            return status;
+        }
+        public bool Delete(int id)
+        {
+            Product theProduct = Get(id);
+            if (theProduct != null)
+            {
+                List<Product> allProducts = GetAll();
+                allProducts.Remove(theProduct);
+                IDataRepository<Product> repo = new BinaryRepository<Product>();
+                repo.Serialize("products.dat", allProducts);
+            }
+            return false;
         }
 
-        public Product GetProductById(int id)
+        public Product Get(int id)
         {
-            List<Product> products = this.products;
+            Product foundProduct = null;
+            List<Product> products = GetAll();
             foreach (Product p in products)
             {
-                if (p.Id == id) { return p; }
+                if (p.Id == id)
+                {
+                    foundProduct = p;
 
+                }
             }
-            return null;
+            return foundProduct;
         }
 
-        public Product GetProductByName(string title)
+        public List<Product> GetAll()
         {
-            Product foundproduct = null;
-            List<Product> products = GetProducts();
-            foreach (Product p in products)
-            {
-                if (p.Title == title) { foundproduct= p; }
-
-            }
-            return foundproduct;
-
-        }
-
-        public List<Product> GetProducts()
-        {
-            List<Product> productsList = new List<Product>();
-            IDataRepository repository = new BinaryRepository();
+            List<Product> products = new List<Product>();
+            IDataRepository<Product> repository = new BinaryRepository<Product>();
             products = repository.Deserialize("products.dat");
             return products;
         }
 
         public bool Insert(Product product)
         {
-            products.Add(product);
-            return true;
+            List<Product> allProducts = GetAll();
+            allProducts.Add(product);
+            IDataRepository<Product> repo = new BinaryRepository<Product>();
+            repo.Serialize("products.dat", allProducts);
+
+            return false;
         }
 
-        public bool Update(Product product)
+        public bool Update(Product productTobeUpdated)
         {
-
-            Product product1 = this.GetProductById(product.Id);
-            if(product1 != null)
+            Product theProduct = Get(productTobeUpdated.Id);
+            if (theProduct != null)
             {
-                List<Product> allProducts = GetProducts();
-
+                List<Product> allProducts = GetAll();
+                allProducts.Remove(theProduct);
+                allProducts.Add(productTobeUpdated);
+                IDataRepository<Product> repo = new BinaryRepository<Product>();
+                repo.Serialize("products.dat", allProducts);
             }
-            return true;
-
+            return false;
         }
     }
 }

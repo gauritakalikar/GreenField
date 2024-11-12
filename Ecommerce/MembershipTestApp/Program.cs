@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Membbership
+namespace MembershipTestApp
 {
-    internal class Credential
+    internal class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }

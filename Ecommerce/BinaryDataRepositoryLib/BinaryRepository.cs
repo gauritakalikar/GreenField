@@ -3,38 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Specification;
-using POCO;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using POCO;
+using Specification;
 namespace BinaryDataRepositoryLib
 {
-    public class BinaryRepository:IDataRepository
+    public class BinaryRepository<T> : IDataRepository<T>
     {
-        public bool Serialize(string filename, List<Product> products)
+        public bool Serialize(string filename, List<T> items)
         {
             bool status = false;
-
+            // Code for saving
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream= new FileStream(filename, FileMode.OpenOrCreate);
-            formatter.Serialize(stream, products);
+            FileStream stream = new FileStream(filename, FileMode.OpenOrCreate);
+            formatter.Serialize(stream, items);
             stream.Close();
+            status = true;
+
 
             return status;
         }
-        public List<Product> Deserialize(string filename)
+        public List<T> Deserialize(string filename)
         {
-            List<Product> products = new List<Product>();
+            List<T> items = new List<T>();
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(filename, FileMode.Open);
-            if(stream!=null)
+            if (stream != null)
             {
-                
-                products =(List<Product>) formatter.Deserialize(stream);
-            }
 
+                items = (List<T>)formatter.Deserialize(stream);
+            }
             stream.Close();
-            return products;
+            // retrive all products from file
+            return items;
 
         }
     }

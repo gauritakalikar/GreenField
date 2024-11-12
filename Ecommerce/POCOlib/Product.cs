@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace POCO
 {
+
     [Serializable]
     public class Product
     {

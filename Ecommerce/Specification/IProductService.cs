@@ -9,13 +9,11 @@ namespace Specification
 {
     public interface IProductService
     {
-        List<Product> GetProducts();
-        Product GetProductById(int id);
-        Product GetProductByName(string name);
-
+        List<Product> GetAll();
+        Product Get(int id);
         bool Insert(Product product);
         bool Update(Product product);
-        bool Delete(Product product);
-        
+        bool Delete(int id);
+
     }
 }
