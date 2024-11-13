@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using POCO;
+using EcommerceEntities;
 
 namespace Specification
 {
@@ -16,7 +16,9 @@ namespace Specification
 
         bool ResetPassword(string username, string oldpassword, string newpassword);
 
-        List<User> GetAllUser();
+        User GetUser(int id);
+        List<User> GetAllUsers();
         List<Credential> GetAllCredentials();
+        bool Delete(int id);
     }
 }

@@ -1,10 +1,10 @@
-﻿using Services;
+﻿using EcommerceServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using POCO;
+using EcommerceEntities;
 namespace SerializationTestApp
 {
     internal class Program

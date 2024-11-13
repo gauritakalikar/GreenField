@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POCO
+namespace EcommerceEntities
 {
 
-    [Serializable]
+    
     public class Product
     {
         public int Id { get; set; }  //auto property

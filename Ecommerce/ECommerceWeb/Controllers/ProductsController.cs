@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Catalog;
-using POCO;
+using EcommerceEntities;
 using Specification;
-using Services;
+using EcommerceServices;
 
 namespace ECommerceWeb.Controllers
 {

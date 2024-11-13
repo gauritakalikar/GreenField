@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,9 +50,13 @@
       <Project>{f755c08e-fdbf-4ee3-b767-4b0f0323a83f}</Project>
       <Name>BinaryDataRepositoryLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\POCOlib\POCOlib.csproj">
+    <ProjectReference Include="..\JSONDataRepositoryLib\JSONDataRepositoryLib.csproj">
+      <Project>{f15e91d1-e7a8-444c-ad0a-7a64ac0255dc}</Project>
+      <Name>JSONDataRepositoryLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POCOlib\EcommerceEntities.csproj">
       <Project>{a1402efa-3a65-4ecb-a988-831095e434fc}</Project>
-      <Name>POCOlib</Name>
+      <Name>EcommerceEntities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Specification\Specification.csproj">
       <Project>{c2593210-f807-4d1a-9435-3d8faf0aaee4}</Project>

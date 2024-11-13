@@ -62,6 +62,10 @@
       <Project>{34773855-3ed3-448e-a9b0-301eb797a175}</Project>
       <Name>OrderProcessing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\POCOlib\EcommerceEntities.csproj">
+      <Project>{a1402efa-3a65-4ecb-a988-831095e434fc}</Project>
+      <Name>EcommerceEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

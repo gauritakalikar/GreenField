@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CRM;
 using OrderProcessing;
 using Catalog;
+using EcommerceEntities;
 namespace ECommerceTest
 {
     internal class Program
@@ -71,12 +72,6 @@ namespace ECommerceTest
             product2.Id = 2;
             product1.Description = "product description one";
             product2.Description = "product description two";
-            product1.Title = "Chips";
-            product2.Title = "Chocolate";
-            product1.ImgURL = "ABC";
-            product2.ImgURL = "XYZ";
-            product1.unitPrice = 40;
-            product2.unitPrice = 45;
             product1.Quantity = 1500;
             product2.Quantity = 500;
 
@@ -84,15 +79,11 @@ namespace ECommerceTest
             productService.Insert(product1);
             productService.Insert(product2);
 
-            List<Product> AllProducts = productService.GetProducts();
+            List<Product> AllProducts = productService.GetAll();
             foreach (Product product in AllProducts)
             {
                 Console.WriteLine(product.Id);
                 Console.WriteLine(product.Description);
-                Console.WriteLine(product.Title);
-                Console.WriteLine(product.ImgURL);
-                Console.WriteLine(product.Quantity);
-                Console.WriteLine(product.unitPrice);
             }
             Console.ReadLine();
         }

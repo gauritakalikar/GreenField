@@ -5,18 +5,18 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
-using BinaryDataRepositoryLib;
-using POCO;
+using JSONDataRepositoryLib;
+using EcommerceEntities;
 using Specification;
 
-namespace Services
+namespace EcommerceServices
 {
 
     public class AuthService : IAuthService
     {
-        public static string logfile = "logfile.dat";
+        public static string logfile = @"C:/Users/gauri.takalikar/source/grepos/GreenField/Ecommerce/MembershipTestApp/bin/Debug/logfile.json";
 
-        public static string credfile = "credentials.dat";
+        public static string credfile = @"C:/Users/gauri.takalikar/source/grepos/GreenField/Ecommerce/MembershipTestApp/bin/Debug/credentials.json";
 
         public bool Seeding()
         {
@@ -30,8 +30,10 @@ namespace Services
             credentials.Add(new Credential { Email = "gauri@gmail.com", Password = "1234" });
             credentials.Add(new Credential { Email = "shruti@gmail.com", Password = "5678" });
 
-            IDataRepository<User> repository = new BinaryRepository<User>();
-            IDataRepository<Credential> dataRepository = new BinaryRepository<Credential>();
+            //IDataRepository<User> repository = new BinaryRepository<User>();
+            IDataRepository<User> repository = new JsonRepository<User>();
+            //IDataRepository<Credential> dataRepository = new BinaryRepository<Credential>();
+            IDataRepository<Credential> dataRepository = new JsonRepository<Credential>();
             status = repository.Serialize(logfile, Users);
             status = false;
             status = dataRepository.Serialize(credfile, credentials);
@@ -41,7 +43,7 @@ namespace Services
         {
             bool status = false;
             List<User> users = new List<User>();
-            users = GetAllUser();
+            users = GetAllUsers();
             users.Add(u);
 
             List<Credential> credentials = new List<Credential>();
@@ -49,11 +51,11 @@ namespace Services
             Credential credential = new Credential { Email = u.Email, Password = pass };
             credentials.Add(credential);
 
-            IDataRepository<User> repository = new BinaryRepository<User>();
+            IDataRepository<User> repository = new JsonRepository<User>();
             status = repository.Serialize(logfile, users);
             status = false;
 
-            IDataRepository<Credential> dataRepository = new BinaryRepository<Credential>();
+            IDataRepository<Credential> dataRepository = new JsonRepository<Credential>();
             status = dataRepository.Serialize(credfile, credentials);
             return status;
         }
@@ -72,17 +74,17 @@ namespace Services
             return null;
 
         }
-        public List<User> GetAllUser()
+        public List<User> GetAllUsers()
         {
             List<User> users = new List<User>();
-            IDataRepository<User> repository = new BinaryRepository<User>();
+            IDataRepository<User> repository = new JsonRepository<User>();
             users = repository.Deserialize(logfile);
             return users;
         }
         public List<Credential> GetAllCredentials()
         {
             List<Credential> credentials = new List<Credential>();
-            IDataRepository<Credential> repository = new BinaryRepository<Credential>();
+            IDataRepository<Credential> repository = new JsonRepository<Credential>();
             credentials = repository.Deserialize(credfile);
             return credentials;
         }
@@ -90,7 +92,7 @@ namespace Services
 
         public bool Login(string username, string password)
         {
-            IDataRepository<Credential> repository = new BinaryRepository<Credential>();
+            IDataRepository<Credential> repository = new JsonRepository<Credential>();
             List<Credential> credentials = repository.Deserialize(credfile);
             foreach (Credential cred in credentials)
             {
@@ -111,9 +113,37 @@ namespace Services
                 if (cred.Email == username & cred.Password == oldpassword)
                 {
                     cred.Password = newpassword;
-                    IDataRepository<Credential> dataRepository = new BinaryRepository<Credential>();
+                    IDataRepository<Credential> dataRepository = new JsonRepository<Credential>();
                     return dataRepository.Serialize(credfile, credentials);
                 }
+            }
+            return false;
+        }
+
+        public User GetUser(int id)
+        {
+            User foundUser = null;
+            List<User> users = GetAllUsers();
+            foreach (User u in users)
+            {
+                if (u.Id == id)
+                {
+                    foundUser = u;
+                }
+            }
+            return foundUser;
+        }
+
+        public bool Delete(int id)
+        {
+            User user = GetUser(id);
+            if (user != null)
+            {
+                List<User> users = GetAllUsers();
+                users.RemoveAll(u => u.Id == id);
+                IDataRepository<User> repository = new JsonRepository<User>();
+                repository.Serialize(logfile, users);
+                return true;
             }
             return false;
         }

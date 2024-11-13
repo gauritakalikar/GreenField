@@ -49,5 +49,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POCOlib\EcommerceEntities.csproj">
+      <Project>{a1402efa-3a65-4ecb-a988-831095e434fc}</Project>
+      <Name>EcommerceEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\EcommerceServices.csproj">
+      <Project>{e65d7832-4507-4144-855b-58906640e21f}</Project>
+      <Name>EcommerceServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Specification\Specification.csproj">
+      <Project>{c2593210-f807-4d1a-9435-3d8faf0aaee4}</Project>
+      <Name>Specification</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -48,13 +48,13 @@
       <Project>{f755c08e-fdbf-4ee3-b767-4b0f0323a83f}</Project>
       <Name>BinaryDataRepositoryLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\POCOlib\POCOlib.csproj">
+    <ProjectReference Include="..\POCOlib\EcommerceEntities.csproj">
       <Project>{a1402efa-3a65-4ecb-a988-831095e434fc}</Project>
-      <Name>POCOlib</Name>
+      <Name>EcommerceEntities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Service\Services.csproj">
+    <ProjectReference Include="..\Service\EcommerceServices.csproj">
       <Project>{e65d7832-4507-4144-855b-58906640e21f}</Project>
-      <Name>Services</Name>
+      <Name>EcommerceServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
