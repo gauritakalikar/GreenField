@@ -1,0 +1,20 @@
+﻿@using HDFCBankApp.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customers list</h2>
+
+@{
+    List<Customer> list = (List<Customer>)ViewData["list"];
+}
+
+<div>
+    @foreach (Customer c in list)
+    {
+        <p>@c.FirstName @c.LastName, @c.Location, <a href="Details/@c.Id">Details</a></p>
+
+        <hr />
+    }
+</div>
+

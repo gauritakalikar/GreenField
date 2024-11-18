@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<hr />
+<form method="post" action="/Auth/Login">
+    <table>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" id="email"</td>
+        </tr>
+
+        <td>Password</td>
+        <td><input type="password" name="password" id="password"</td>
+        </tr>
+
+        <td></td>
+        <td><button type="submit">Login</button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a href="/Auth/Register">Register</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a href="/Auth/ResetPassword">Forgot Password</a></td>
+        </tr>
+    </table>
+</form>
+

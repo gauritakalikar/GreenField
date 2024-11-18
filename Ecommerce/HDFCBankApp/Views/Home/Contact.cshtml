@@ -1,0 +1,23 @@
+﻿@using HDFCBankApp.Models;
+@{
+    ViewBag.Title = "Contact";
+    string mymessage = ViewBag.Message;
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    @{
+        Contact c = (Contact)ViewData["contact"];
+
+        <p>@c.Email</p>
+        <p>@c.Website</p>
+        <p>@c.ContactNumber</p>
+
+    }
+
+
+
+    <h6>@mymessage</h6>
+
+</main>

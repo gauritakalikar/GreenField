@@ -1,0 +1,21 @@
+﻿﻿@using HDFCBankApp.Models;
+@{
+    ViewBag.Title = "Details";
+    Customer c = (Customer)ViewData["customer"];
+}
+
+@*
+     <h2>@c.FirstName 's Details page</h2>
+
+    <p>@c.FirstName @c.LastName</p>
+    <p>@c.Email</p>
+    <p>@c.ContactNumber</p>
+    <p>@c.Location</p>
+*@
+
+<h2>@Model.FirstName 's Details page</h2>
+
+<p>@Model.FirstName @Model.LastName</p>
+<p>@Model.Email</p>
+<p>@Model.ContactNumber</p>
+<p>@Model.Location</p>

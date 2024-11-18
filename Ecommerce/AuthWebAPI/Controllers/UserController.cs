@@ -19,7 +19,7 @@ namespace AuthWebAPI.Controllers
             return users;
         }
 
-        // GET api/values/5
+        // GET api/user/5
         public User Get(int id)
         {
             AuthService svc = new AuthService();
@@ -27,22 +27,14 @@ namespace AuthWebAPI.Controllers
             return user;
         }
 
-        // POST api/values
+        // POST api/user
         public void Post([FromBody] User user, string pass)
         {
             IAuthService svc = new AuthService();
             svc.Register(user, pass);
         }
 
-        // PUT api/values/5
-        /*
-        public void Put(int id, [FromBody] User user)
-        {
-            IAuthService svc = new AuthService();
-            svc.Update(user);
-        }
-        */
-        // DELETE api/values/5
+        // DELETE api/user/5
         public void Delete(int id)
         {
             IAuthService svc = new AuthService();
